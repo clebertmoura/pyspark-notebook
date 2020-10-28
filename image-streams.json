@@ -1,0 +1,29 @@
+{
+    "kind": "ImageStream",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "pyspark-notebook",
+        "annotations": {
+            "openshift.io/display-name": "Jupyter PySpark Notebook"
+        }
+    },
+    "spec": {
+        "tags": [
+            {
+                "name": "latest",
+                "annotations": {
+                    "openshift.io/display-name": "Jupyter PySpark Notebook (latest)",
+                    "description": "Build and deploy a custom Jupyter PySpark Notebook image with pre-bundled notebooks, data files and Python packages.",
+                    "iconClass": "icon-python",
+                    "sampleRepo": "https://github.com/getwarped/sample-notebooks.git",
+                    "tags": "builder,python",
+                    "version": "latest"
+                },
+                "from": {
+                    "kind": "DockerImage",
+                    "name": "jupyter/pyspark-notebook:4a112c0f11eb"
+                }
+            }
+        ]
+    }
+}
