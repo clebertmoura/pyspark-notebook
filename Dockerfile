@@ -4,8 +4,8 @@ FROM jupyter/pyspark-notebook:4a112c0f11eb
 
 USER root
 
-# Copia os drivers JDBC
-COPY ./jdbc/* /tmp/src
+# Copia os arquivos
+COPY . /tmp/src
 
 # Install additional libraries required by Python packages which are in
 # the minimal base image. Also install 'rsync' so the 'oc rsync' command
@@ -23,11 +23,6 @@ LABEL io.k8s.description="S2I builder for Jupyter (pyspark-notebook)." \
       io.openshift.expose-services="8888:http" \
       io.openshift.tags="builder,python,jupyter" \
       io.openshift.s2i.scripts-url="image:///opt/app-root/s2i/bin"
-
-# Copy in S2I builder scripts for installing Python packages and copying
-# in of notebooks and data files.
-
-COPY s2i /opt/app-root/s2i
 
 # Adjust permissions on home directory so writable by group root.
 
